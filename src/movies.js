@@ -17,13 +17,13 @@ function howManyMovies(moviesArray) {
 function scoresAverage(moviesArray) {
 
     if (moviesArray.length === 0){return 0}
+    const filteredArray = moviesArray
+    .filter(movie=>movie.score !== undefined);
 
-    const sum = moviesArray
-    .filter(movie=>movie.score !== undefined)
-    .reduce((accumulado,movie)=>accumulado+movie.score,0)
-       
-    return sum
-
+    const sum = 
+    filteredArray.map(movie=>movie.score).reduce((previousValue, currentValue) =>previousValue+currentValue,0)
+     
+    return sum/filteredArray.length 
 }
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
